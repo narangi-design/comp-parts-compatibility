@@ -1,2 +1,2 @@
 export { default as SolutionReport } from './SolutionReport'
-export { isGpuPsuCompatibile } from './solution-report'
+export { Solver } from './solution-report'

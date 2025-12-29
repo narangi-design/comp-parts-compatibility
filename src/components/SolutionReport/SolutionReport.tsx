@@ -1,15 +1,21 @@
-import type { GpuModel, PsuModel } from '../ModelSelector/part-model'
+import Computer from '../../model/computer'
+import type { CpuModel, GpuModel, PsuModel, SsdModel } from '../../model/part-model'
 import { Solver } from './solution-report'
 
 type SolutionReportProps = {
     gpu: GpuModel | null
+    cpu: CpuModel | null
+    ssd: SsdModel | null
     psu: PsuModel | null
 }
 
 export default function SolutionReport(props: SolutionReportProps) {
-    const gpuPower = props.gpu?.powerConsumption ?? null
-    const psuPower = props.psu?.outputPower ?? null
-    const result: CompatibilityResult = Solver.solveGpuPsu(gpuPower, psuPower)
+    const cpu = props.cpu
+    const gpu = props.gpu
+    const ssd = props.ssd
+    const psu = props.psu
+    const result: CompatibilityResult = Solver.solveConfig(new Computer(cpu, gpu, ssd, psu)
+    )
 
     switch (result) {
         case 'missing value':
@@ -17,16 +23,18 @@ export default function SolutionReport(props: SolutionReportProps) {
         case 'yes':
             return (
                 <p>
-                    GPU consumption power: { gpuPower } W<br />
-                    PSU output power: { psuPower } W<br />
+                    CPU consumption power: { cpu?.powerConsumption } W<br />
+                    GPU consumption power: { gpu?.powerConsumption } W<br />
+                    PSU output power: { psu?.outputPower } W<br />
                     The components are compatible!
                 </p>
             )
         case 'no':
             return (
                 <p>
-                    GPU consumption power: { gpuPower } W<br />
-                    PSU output power: { psuPower } W<br />
+                    CPU consumption power: { cpu?.powerConsumption } W<br />
+                    GPU consumption power: { gpu?.powerConsumption } W<br />
+                    PSU output power: { psu?.outputPower } W<br />
                     Chosen components are not compatible.
                 </p>
             )

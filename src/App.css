@@ -34,12 +34,14 @@
 }
 
 .model-selector {
+  display: flex;
+  flex-direction: row;
   font-size: 15px;
-  margin: 0 20px;
+  margin: 30px;
 }
 
 select {
-  margin: 0 10px;
+  margin: 0 20px;
   padding: 5px;
   font-size: 15px;
 }

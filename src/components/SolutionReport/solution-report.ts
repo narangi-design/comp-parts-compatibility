@@ -1,11 +1,17 @@
+import Computer from "../../model/computer"
+
 export class Solver {
-    static solveGpuPsu(
-        powerConsumption: number | null,
-        outputPower: number | null
+    static solveConfig(comp: Computer
     ): CompatibilityResult {
-        if (powerConsumption === null || outputPower === null)
-            return 'missing value'
-        else if (powerConsumption < outputPower)
+        for (const arg of comp.components) {
+            if (arg == null) return 'missing value'
+        }
+
+        const totalConsumption = comp.consumers.reduce(
+            (acc, part) => acc + (part?.powerConsumption ?? 0), 0
+        )
+
+        if (totalConsumption < comp.psu!.outputPower)
             return 'yes'
         else
             return 'no'

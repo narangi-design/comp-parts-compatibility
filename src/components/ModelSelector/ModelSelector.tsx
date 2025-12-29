@@ -1,5 +1,5 @@
 import { useState, type ChangeEvent } from 'react'
-import { PartModel } from './part-model'
+import { PartModel } from '../../@types/parts'
 
 type ModelSelectorProps<T extends PartModel> = {
     partType: string
@@ -20,17 +20,19 @@ export default function ModelSelector<T extends PartModel>(props: ModelSelectorP
     }
 
     return (
-        <label className='model-selector'>
-            Pick {props.partType} model:
+        <div className='model-selector'>
+            <label>
+                Pick {props.partType} model:
+            </label>
             <select
                 className='selectedModel'
                 value={selectedModel.id}
                 onChange={onSelectChangeHandler}
                 multiple={false}>
                 {props.partModels.map(p =>
-                    <option value={p.id}>{p.name}</option>
+                    <option key={p.id} value={p.id}>{p.name}</option>
                 )}
             </select>
-        </label>
+        </div>
     )
 }
