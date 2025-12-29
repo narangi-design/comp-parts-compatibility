@@ -33,10 +33,17 @@
   }
 }
 
-.card {
-  padding: 2em;
+.model-selector {
+  font-size: 15px;
+  margin: 0 20px;
 }
 
-.read-the-docs {
-  color: #888;
+select {
+  margin: 0 10px;
+  padding: 5px;
+  font-size: 15px;
+}
+
+p {
+  font-size: 15px;
 }

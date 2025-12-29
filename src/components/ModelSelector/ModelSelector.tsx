@@ -24,7 +24,7 @@ export default function ModelSelector<T extends PartModel>(props: ModelSelectorP
             Pick {props.partType} model:
             <select
                 className='selectedModel'
-                value={selectedModel.name}
+                value={selectedModel.id}
                 onChange={onSelectChangeHandler}
                 multiple={false}>
                 {props.partModels.map(p =>
