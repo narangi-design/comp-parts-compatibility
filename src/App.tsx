@@ -11,8 +11,8 @@ function App() {
   const [selectedCpu, setSelectedCpu] = useState<Cpu | null>(null)
 
   const gpuModels = [
-    new Gpu('GA', 'Nvidia 5600', 500, 'ATX'),
-    new Gpu('GB', 'Nvidia 5800', 700, 'E-ATX'),
+    new Gpu('GA', 'Nvidia 5600', 500, 'ATX', new Map().set(0, 'HDMI')),
+    new Gpu('GB', 'Nvidia 5800', 700, 'E-ATX', new Map().set(0, 'DVI')),
   ]
 
   const psuModels = [

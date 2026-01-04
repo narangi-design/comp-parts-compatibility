@@ -1,21 +1,28 @@
 import {
     PartModel,
     type PowerConsumer,
-    type MotherboardFormFactorCompatible
+    type MonitorPort,
+    type MotherboardFormFactor,
+    type MotherboardFormFactorCompatible,
+    type MonitorPortCompatible,
 } from '../@types/parts'
 
-export class Gpu extends PartModel implements PowerConsumer, MotherboardFormFactorCompatible {
+export class Gpu extends PartModel
+implements PowerConsumer, MotherboardFormFactorCompatible, MonitorPortCompatible {
     public powerConsumption: number
     public formFactor: MotherboardFormFactor
+    public monitorPorts: Map<number, MonitorPort>
     constructor(
         id: string,
         name: string,
         powerConsumption: number,
-        formFactor: MotherboardFormFactor
+        formFactor: MotherboardFormFactor,
+        monitorPorts: Map<number, MonitorPort>
     ) {
         super(id, name)
         this.powerConsumption = powerConsumption
         this.formFactor = formFactor
+        this.monitorPorts = monitorPorts
     }
 }
 
@@ -76,5 +83,17 @@ export class MotherBoard extends PartModel implements MotherboardFormFactorCompa
     ) {
         super(id, name)
         this.formFactor = formFactor
+    }
+}
+
+export class Monitor extends PartModel implements MonitorPortCompatible {
+    public monitorPorts: Map<number, MonitorPort>
+    constructor(
+        id: string,
+        name: string,
+        monitorPorts: Map<number, MonitorPort>
+    ) {
+        super(id, name)
+        this.monitorPorts = monitorPorts
     }
 }
