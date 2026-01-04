@@ -11,3 +11,7 @@ export class PartModel {
 export interface PowerConsumer {
     get powerConsumption(): number
 }
+
+export interface MotherboardFormFactorCompatible {
+    get formFactor(): MotherboardFormFactor
+}

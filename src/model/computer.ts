@@ -1,17 +1,17 @@
 import type { PartModel, PowerConsumer } from "../@types/parts"
-import { CpuModel, GpuModel, SsdModel, PsuModel } from "./part-model"
+import { Cpu, Gpu, Ssd, Psu } from "./part-model"
 
 export default class Computer {
-    cpu: CpuModel | null = null
-    gpu: GpuModel | null = null
-    ssd: SsdModel | null = null
-    psu: PsuModel | null = null
+    cpu: Cpu | null = null
+    gpu: Gpu | null = null
+    ssd: Ssd | null = null
+    psu: Psu | null = null
 
     constructor(
-        cpu: CpuModel | null = null,
-        gpu: GpuModel | null = null,
-        ssd: SsdModel | null = null,
-        psu: PsuModel | null = null
+        cpu: Cpu | null = null,
+        gpu: Gpu | null = null,
+        ssd: Ssd | null = null,
+        psu: Psu | null = null
     ) {
         this.cpu = cpu
         this.gpu = gpu

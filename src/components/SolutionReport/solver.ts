@@ -17,3 +17,4 @@ export class Solver {
             return 'no'
     }
 }
+

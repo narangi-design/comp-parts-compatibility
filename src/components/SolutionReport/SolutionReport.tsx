@@ -1,12 +1,12 @@
 import Computer from '../../model/computer'
-import type { CpuModel, GpuModel, PsuModel, SsdModel } from '../../model/part-model'
-import { Solver } from './solution-report'
+import type { Cpu, Gpu, Psu, Ssd } from '../../model/part-model'
+import { Solver } from './solver'
 
 type SolutionReportProps = {
-    gpu: GpuModel | null
-    cpu: CpuModel | null
-    ssd: SsdModel | null
-    psu: PsuModel | null
+    gpu: Gpu | null
+    cpu: Cpu | null
+    ssd: Ssd | null
+    psu: Psu | null
 }
 
 export default function SolutionReport(props: SolutionReportProps) {
