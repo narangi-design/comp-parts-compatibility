@@ -1,12 +1,13 @@
+import { PartModel } from '../../@types/parts'
 import Computer from '../../model/computer'
 import type { Cpu, Gpu, Psu, Ssd } from '../../model/part-model'
 import { Solver } from './solver'
 
 type SolutionReportProps = {
-    gpu: Gpu | null
-    cpu: Cpu | null
-    ssd: Ssd | null
-    psu: Psu | null
+    gpu: Gpu | undefined
+    cpu: Cpu | undefined
+    ssd: Ssd | undefined
+    psu: Psu | undefined
 }
 
 export default function SolutionReport(props: SolutionReportProps) {
@@ -14,8 +15,8 @@ export default function SolutionReport(props: SolutionReportProps) {
     const gpu = props.gpu
     const ssd = props.ssd
     const psu = props.psu
-    const result: CompatibilityResult = Solver.solveConfig(new Computer(cpu, gpu, ssd, psu)
-    )
+    const parts = [cpu, gpu, ssd, psu].filter(Boolean) as PartModel[]
+    const result: CompatibilityResult = Solver.checkPowerCompatibility(new Computer(parts))
 
     switch (result) {
         case 'missing value':
