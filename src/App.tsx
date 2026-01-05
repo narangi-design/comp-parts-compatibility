@@ -6,9 +6,9 @@ import { SolutionReport } from './components/SolutionReport'
 
 function App() {
 
-  const [selectedGpu, setSelectedGpu] = useState<Gpu | null>(null)
-  const [selectedPsu, setSelectedPsu] = useState<Psu | null>(null)
-  const [selectedCpu, setSelectedCpu] = useState<Cpu | null>(null)
+  const [selectedGpu, setSelectedGpu] = useState<Gpu | undefined>(undefined)
+  const [selectedPsu, setSelectedPsu] = useState<Psu | undefined>(undefined)
+  const [selectedCpu, setSelectedCpu] = useState<Cpu | undefined>(undefined)
 
   const gpuModels = [
     new Gpu('GA', 'Nvidia 5600', 500, 'ATX', new Map().set(0, 'HDMI')),
